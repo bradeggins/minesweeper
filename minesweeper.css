@@ -3,7 +3,7 @@ html, body {
   font-family: 'VT323', monospace;
   text-transform: uppercase;
   color: black;
-  background-color: lightgrey;
+  background-color: white;
   font-size: 50px;
 }
 
@@ -34,10 +34,9 @@ body {
   font-size: 2rem;
   width: 75px;
   height: 75px;
-  border: 1px #ccc dotted;
-  border-radius: 10%;
+  border: 2px #ccc solid;
   background-color: white;
-  margin: 3px;
+  margin: 0px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -52,7 +51,7 @@ div.mine, div.mine:hover {
 }
 
 div.hidden {
-  background: #eee;
+  background: gray;
 }
 
 div.hidden:hover {
@@ -66,3 +65,17 @@ div.marked, div.marked:hover {
 #message p{
   margin: 0.3em;
 }
+
+.reset{
+  padding: 0.5em 1em;
+  font-family: 'VT323', monospace;
+  font-size: 32px;
+  border-radius: 10%;
+  align-content: center;
+}
+
+div.button-controls{
+  display:flex;
+  flex-direction: column;
+}
+

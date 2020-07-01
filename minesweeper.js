@@ -17,11 +17,11 @@ function difficultyEasy () {
 }
 //Change math.random = 0.75 for normal
 function difficultyNormal () {
-  difficulty = 0.75
+  difficulty = 0.75;
 }
 //Change math.randon = 0.6 for hard
 function difficultyHard () {
-  difficulty =  0.6
+  difficulty =  0.6;
 }
 
 

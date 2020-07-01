@@ -14,13 +14,12 @@
     <div class="board"></div>
     <div class = "button-controls">
       <form>
-        <label><input type='radio' name="difficulty" onchange="difficultyEasy()">Easy</label>
-        <label><input type='radio' name="difficulty" onchange="difficultyNormal()">Normal</label>
-        <label><input type='radio' name="difficulty" onchange="difficultyHard()">Hard</label>
+        <label><input type='radio' class="difficulty" name="difficulty" onchange="difficultyEasy()">Easy</label>
+        <label><input type='radio' class="difficulty" name="difficulty" onchange="difficultyNormal()">Normal</label>
+        <label><input type='radio' class="difficulty" name="difficulty" onchange="difficultyHard()">Hard</label>
+        <br>
       </form>
-      <br>
-      <button onclick="reset()">Reset!</button>
-      
+      <button class="reset" onclick="reset()">Reset!</button>
     </div>
     <script src="minesweeper.js"></script>
   </body>

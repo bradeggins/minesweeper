@@ -1,12 +1,15 @@
 document.addEventListener('DOMContentLoaded', startGame)
 
-// Define your `board` object here!
-// Declare empty board with array in cells
+// Declare empty board object
 var board = {}
+
+var defaultSize = 6
 
 function reset(){
   location.reload()
 }
+
+createBoard(defaultSize)
 
 // Define function to create board properties
 function createBoard (sideLength){
@@ -31,7 +34,7 @@ function createBoard (sideLength){
 // Function call to create board
 
 function startGame () {
-  createBoard(6)
+  
   
 // Loop through board.cells
  

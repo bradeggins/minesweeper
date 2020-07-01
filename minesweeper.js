@@ -1,7 +1,29 @@
 document.addEventListener('DOMContentLoaded', startGame)
 
 // Define your `board` object here!
-// var board = 
+// Declare empty board with array in cells
+var board = {
+            cells:[]
+            }
+// Defin function to create board properties
+function createBoard (obj, sideLength){
+  // Loop for declaring rows value
+  for (var i = 0; i < sideLength; i++){
+    // Loop for declaring col value
+    for (var j = 0; j < sideLength; j++){
+      // Push value to end of array
+      obj.cells.push({
+                      row: i, 
+                      col: j, 
+                      isMine: false,
+                      hidden: true 
+                      })
+
+    }
+  }
+}
+// Function call to creat board
+var create = createBoard(board, 6)
 
 function startGame () {
   // Don't remove this function call: it makes the game work!

@@ -2,11 +2,11 @@ document.addEventListener('DOMContentLoaded', startGame)
 
 // Define your `board` object here!
 // Declare empty board with array in cells
-var board = {
-            cells:[]
-            }
-// Defin function to create board properties
-function createBoard (obj, sideLength){
+var board = {}
+
+// Define function to create board properties
+function createBoard (sideLength){
+  board.cells = []
   // Loop for declaring rows value
   for (var i = 0; i < sideLength; i++){
     // Loop for declaring col value
@@ -14,7 +14,7 @@ function createBoard (obj, sideLength){
       // Push value to end of array
       // Randomly assign random true to mines https://stackoverflow.com/questions/36756331/js-generate-random-boolean
       var randomBool = Math.random() >= 0.9
-      obj.cells.push({
+      board.cells.push({
                       row: i, 
                       col: j, 
                       isMine: randomBool,
@@ -25,9 +25,10 @@ function createBoard (obj, sideLength){
   }
 }
 // Function call to create board
-var create = createBoard(board, 4)
 
 function startGame () {
+  createBoard(6)
+  
 // Loop through board.cells
  
   for (var i = 0; i < board.cells.length; i++){

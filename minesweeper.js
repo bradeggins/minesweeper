@@ -13,7 +13,7 @@ function createBoard (obj, sideLength){
     for (var j = 0; j < sideLength; j++){
       // Push value to end of array
       // Randomly assign random true to mines https://stackoverflow.com/questions/36756331/js-generate-random-boolean
-      var randomBool = Math.random() >= 0.95
+      var randomBool = Math.random() >= 0.9
       obj.cells.push({
                       row: i, 
                       col: j, 
@@ -24,8 +24,8 @@ function createBoard (obj, sideLength){
     }
   }
 }
-// Function call to creat board
-var create = createBoard(board, 6)
+// Function call to create board
+var create = createBoard(board, 4)
 
 function startGame () {
 // Loop through board.cells
@@ -50,17 +50,19 @@ function startGame () {
 // 1. Are all of the cells that are NOT mines visible?
 // 2. Are all of the mines marked?
 function checkForWin () {
-  var win = false;
+  var win = true;
   // Loop through board cells
   for (var i = 0; i < board.cells.length; i++){
-    if (board.cells[i].hidden == true){
-      return;
-    } else if (board.cells[i].isMine == true && board.cells[i].isMarked == true){
-      win = true;
-    }
-        
+    // Check to see if cell is mine and if it is marked and set win to false
+    if (board.cells[i].isMine == true && board.cells[i].isMarked == false){
+      win = false;
+    } 
+    // Check to see if cell is mine and is hidden, set win to false
+    if (board.cells[i].isMine != true && board.cells[i].hidden == true){
+      win = false;
+    } 
   }
-  if (win == true){
+  if(win == true ){
     lib.displayMessage('You win!')
   }
 }
@@ -87,4 +89,3 @@ function countSurroundingMines (cell) {
     }
     return count;
 }
-

@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', startGame)
 // Declare empty board object
 var board = {}
 
-var defaultSize = 6
+var defaultSize = 4
 
 function reset(){
   location.reload()
@@ -31,19 +31,21 @@ function createBoard (sideLength){
     }
   }
 }
-// Function call to create board
 
+function playWin(){
+  var audio = new Audio('applause.mp3');
+  audio.loop = false;
+  audio.play();
+}
+
+// Function call to create board
 function startGame () {
-  
-  
 // Loop through board.cells
- 
   for (var i = 0; i < board.cells.length; i++){
     // Call countSurroundingMines on cell
     // Assign return to cell property of each object
     board.cells[i].surroundingMines = countSurroundingMines(board.cells[i])
   }
-
   // Assign left click to call checkForWin()
   document.addEventListener("click", checkForWin)
   // Assign right click to call checkForWin()
@@ -72,6 +74,7 @@ function checkForWin () {
   }
   if(win == true ){
     lib.displayMessage('You win!')
+    playWin()
   }
 }
 // Define this function to count the number of mines around the cell

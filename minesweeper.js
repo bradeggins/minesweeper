@@ -26,12 +26,19 @@ function createBoard (obj, sideLength){
 var create = createBoard(board, 6)
 
 function startGame () {
-  // Don't remove this function call: it makes the game work!
+// Loop through board.cells
+ 
+  for (var i = 0; i < board.cells.length; i++){
+    // Call countSurroundingMines on cell
+    // Assign return to cell property of each object
+    board.cells[i].surroundingMines = countSurroundingMines(board.cells[i])
+  }
+// Don't remove this function call: it makes the game work!
   lib.initBoard()
 }
 
 // Define this function to look for a win condition:
-//
+
 // 1. Are all of the cells that are NOT mines visible?
 // 2. Are all of the mines marked?
 function checkForWin () {
@@ -50,5 +57,7 @@ function checkForWin () {
 // It will return cell objects in an array. You should loop through 
 // them, counting the number of times `cell.isMine` is true.
 function countSurroundingMines (cell) {
+  
+    
 }
 

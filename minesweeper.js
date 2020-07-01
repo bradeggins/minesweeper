@@ -2,14 +2,28 @@ document.addEventListener('DOMContentLoaded', startGame)
 
 // Declare empty board object
 var board = {}
-
-var defaultSize = 4
+var defaultSize = 6
+var difficulty = 0.75
 
 function reset(){
-  location.reload()
+  board = {}
+  document.querySelector('.board').innerHTML = ""
+  startGame();
 }
 
-createBoard(defaultSize)
+//Change math.random = 0.9 for easy
+function difficultyEasy () {
+  difficulty = 0.9;
+}
+//Change math.random = 0.75 for normal
+function difficultyNormal () {
+  difficulty = 0.75
+}
+//Change math.randon = 0.6 for hard
+function difficultyHard () {
+  difficulty =  0.6
+}
+
 
 // Define function to create board properties
 function createBoard (sideLength){
@@ -20,7 +34,7 @@ function createBoard (sideLength){
     for (var j = 0; j < sideLength; j++){
       // Push value to end of array
       // Randomly assign random true to mines https://stackoverflow.com/questions/36756331/js-generate-random-boolean
-      var randomBool = Math.random() >= 0.9
+      var randomBool = Math.random() >= difficulty;
       board.cells.push({
                       row: i, 
                       col: j, 
@@ -38,9 +52,11 @@ function playWin(){
   audio.play();
 }
 
-// Function call to create board
+
 function startGame () {
-// Loop through board.cells
+  // Function call to create board
+  createBoard(defaultSize)
+  // Loop through board.cells
   for (var i = 0; i < board.cells.length; i++){
     // Call countSurroundingMines on cell
     // Assign return to cell property of each object

@@ -4,6 +4,10 @@ document.addEventListener('DOMContentLoaded', startGame)
 // Declare empty board with array in cells
 var board = {}
 
+function reset(){
+  location.reload()
+}
+
 // Define function to create board properties
 function createBoard (sideLength){
   board.cells = []

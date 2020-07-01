@@ -12,10 +12,12 @@ function createBoard (obj, sideLength){
     // Loop for declaring col value
     for (var j = 0; j < sideLength; j++){
       // Push value to end of array
+      // Randomly assign random true to mines https://stackoverflow.com/questions/36756331/js-generate-random-boolean
+      var randomBool = Math.random() >= 0.95
       obj.cells.push({
                       row: i, 
                       col: j, 
-                      isMine: false,
+                      isMine: randomBool,
                       hidden: true 
                       })
 
@@ -33,6 +35,12 @@ function startGame () {
     // Assign return to cell property of each object
     board.cells[i].surroundingMines = countSurroundingMines(board.cells[i])
   }
+
+  // Assign left click to call checkForWin()
+  document.addEventListener("click", checkForWin)
+  // Assign right click to call checkForWin()
+  document.addEventListener("contextmenu", checkForWin)
+
 // Don't remove this function call: it makes the game work!
   lib.initBoard()
 }
@@ -42,12 +50,20 @@ function startGame () {
 // 1. Are all of the cells that are NOT mines visible?
 // 2. Are all of the mines marked?
 function checkForWin () {
-
-  // You can use this function call to declare a winner (once you've
-  // detected that they've won, that is!)
-  //   lib.displayMessage('You win!')
+  var win = false;
+  // Loop through board cells
+  for (var i = 0; i < board.cells.length; i++){
+    if (board.cells[i].hidden == true){
+      return;
+    } else if (board.cells[i].isMine == true && board.cells[i].isMarked == true){
+      win = true;
+    }
+        
+  }
+  if (win == true){
+    lib.displayMessage('You win!')
+  }
 }
-
 // Define this function to count the number of mines around the cell
 // (there could be as many as 8). You don't have to get the surrounding
 // cells yourself! Just use `lib.getSurroundingCells`: 
